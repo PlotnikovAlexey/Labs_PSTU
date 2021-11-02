@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <clocale>
 
 using namespace std;
@@ -11,22 +11,31 @@ int main()
     cout << "Введите трехзначное число:" << endl;
     cin >> X;
 
-    while ((X < 100) || (X > 999)) {
-        cout << "Введенное число не является трехзначным" << endl << "Повторите ввод" << endl;
-        cin >> X;
-    }
-
     num1 = X / 100;
     num2 = (X / 10) % 10;
     num3 = X % 10;
 
+    while ((X < 100) || (X > 999) || (num1 == num2) || (num2 == num3) || (num1 == num2)) {
+        cout << "Введенное число не является трехзначным или повторяет знак" << endl << "Повторите ввод" << endl;
+        cin >> X;
+        num1 = X / 100;
+        num2 = (X / 10) % 10;
+        num3 = X % 10;
+    }
+
     cout << "Все возможные последовательности чисел:" << endl;
-    cout << num1 << num2 << num3 << endl;
-    cout << num1 << num3 << num2 << endl;
-    cout << num2 << num3 << num1 << endl;
-    cout << num2 << num1 << num3 << endl;
-    cout << num3 << num2 << num1 << endl;
-    cout << num3 << num1 << num2 << endl << endl;
+    cout << num1 << num2 << num3 << "\n";
+
+    swap(num2, num3);
+    cout << num1 << num2 << num3 << "\n";
+    swap(num1, num2);
+    cout << num1 << num2 << num3 << "\n";
+    swap(num1, num3);
+    cout << num1 << num2 << num3 << "\n";
+    swap(num2, num3);
+    cout << num1 << num2 << num3 << "\n";
+    swap(num1, num2);
+    cout << num1 << num2 << num3 << "\n";
 
     cout << "Наибольшее из этих чисел: ";
     if (num1 > num2) {
