@@ -1,58 +1,80 @@
 #include <iostream>
-#include <clocale>
+#include <algorithm>
 
 using namespace std;
 
-int main()
-{
-    setlocale(LC_ALL, "Russian");
-    int X, num1, num2, num3;
-
-    cout << "Введите трехзначное число:" << endl;
-    cin >> X;
-
-    num1 = X / 100;
-    num2 = (X / 10) % 10;
-    num3 = X % 10;
-
-    while ((X < 100) || (X > 999) || (num1 == num2) || (num2 == num3) || (num1 == num2)) {
-        cout << "Введенное число не является трехзначным или повторяет знак" << endl << "Повторите ввод" << endl;
-        cin >> X;
-        num1 = X / 100;
-        num2 = (X / 10) % 10;
-        num3 = X % 10;
+int main() {
+    int count, first, second, third ;
+    bool Flag ;
+    setlocale(LC_ALL, "Rus");
+    cout << "Введите трехзначное число состоящее из разных цифр" << "\n";
+    cin >> count ;
+    while ( Flag == false) {
+        first = count / 100; 
+        second = (count / 10) % 10; 
+        third = count % 10; // 
+        if (count > 100) {
+            if ( count < 999) {
+                if (first != second) {
+                    if (second != third) {
+                        if (third != first) {
+                            Flag = true ;
+                        }
+                    }
+                }
+            }
+        }
+        if ( Flag == false) {
+            cout << "Число не трехзначное или содержит повторяющиеся цифры. Повторите ввод:" << "\n";
+            cin >> count;
+        }
     }
+    cout << "Возможные комбинации чисел: " << "\n";
+    cout << first << second << third << "\n";
 
-    cout << "Все возможные последовательности чисел:" << endl;
-    cout << num1 << num2 << num3 << "\n";
+    swap(second,third);
+    cout << first << second << third << "\n";
 
-    swap(num2, num3);
-    cout << num1 << num2 << num3 << "\n";
-    swap(num1, num2);
-    cout << num1 << num2 << num3 << "\n";
-    swap(num1, num3);
-    cout << num1 << num2 << num3 << "\n";
-    swap(num2, num3);
-    cout << num1 << num2 << num3 << "\n";
-    swap(num1, num2);
-    cout << num1 << num2 << num3 << "\n";
+    swap(first,second);
+    cout << first << second << third << "\n";
 
-    cout << "Наибольшее из этих чисел: ";
-    if (num1 > num2) {
-        if (num2 > num3)
-            cout << num1 << num2 << num3;
-        else if (num1 > num3)
-            cout << num1 << num3 << num2;
-        else
-            cout << num3 << num1 << num2;
+    swap(first,third);
+    cout << first << second << third << "\n";
+
+    swap(second,third);
+    cout << first << second << third << "\n";
+
+    swap(first,second);
+    cout << first << second << third << "\n";
+
+    cout << "Максимальное число : ";
+    if (first > second) {    
+        if (first > third) { 
+            if (second > third) { 
+                cout << first << second << third << endl;
+            }
+            else {
+                cout << first << third << second << endl;
+            }
+        }
     }
     else {
-        if (num3 > num2)
-            cout << num3 << num2 << num1;
-        else if (num1 > num3)
-            cout << num2 << num1 << num3;
-        else
-            cout << num2 << num3 << num1;
+        if (second > third) {
+            if (first > third) {
+                cout << second << first << third << endl;
+            }
+            else{
+                cout << second << third << first << endl;
+            }
+        }
+        else{
+            if (first > second) {
+                cout << third << first << second << endl;
+            }
+            else {
+                cout << third << second << first << endl;
+            }
+        }
     }
     return 0;
 }
