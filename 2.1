@@ -1,0 +1,13 @@
+#include <iostream>
+#include <clocale>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+		float far;
+	cout << "Введите значение в градусах Фаренгейта" << endl;
+	cin >> far;
+	cout << "Эквивалентное значение в градусах Цельсия равно " << 5 * (far - 32) / 9;
+	return 0;
+}
