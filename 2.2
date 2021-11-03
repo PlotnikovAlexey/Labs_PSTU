@@ -1,0 +1,32 @@
+#include <iostream>
+#include <clocale>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	int h, m, s, he, me, se, rh, rm, rs,t;
+	cout << "Введите начальное время" << endl;
+	cout << "Часы - ";
+	cin >> h; 
+	cout << "Минуты - ";
+	cin >> m;
+	cout << "Секунды - ";
+	cin >> s;
+	cout << "Введите конечное время" << endl;
+	cout << "Часы - ";
+	cin >> he;
+	cout << "Минуты - ";
+	cin >> me;
+	cout << "Секунды - ";
+	cin >> se;
+	t = (h - he) * 3600 + (m - me) * 60 + s - se;
+	rh = t / 3600;
+	rm = (t - rh * 3600) / 60;
+	rs = t - rh * 3600 - rm * 60;
+
+	cout << "Разница во времени равна - ";
+	cout << rh << " час \t" << rm << " минут \t" << rs << " секунд";
+
+	return 0;
+}
